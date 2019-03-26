@@ -1,3 +1,6 @@
-<h1>{{threadDetail.threadTitle}}</h1>
-<p>{{threadDetail.pubDate}}</p>
-<p>{{threadDetail.threadDesc}}</p>
+{% extends "boards/base.html" %}
+{% block content %}
+    <h1>{{threadDetail.threadTitle}}</h1>
+    <p>{{threadDetail.pubDate}}</p>
+    <p>{{threadDetail.threadDesc}}</p>
+{% endblock content %}

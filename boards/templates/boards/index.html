@@ -1,5 +1,8 @@
-{% if boardsList %}
-    {% for board in boardsList %}
-        <li><a href="{% url 'detailBoard' board.boardCode %}">{{board.boardName}}</a></li>
-    {% endfor %}
-{% endif %}
+{% extends "boards/base.html" %}
+{% block content %}
+    {% if boardsList %}
+        {% for board in boardsList %}
+            <li><a href="{% url 'detailBoard' board.boardCode %}">{{board.boardName}}</a></li>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}
