@@ -1,0 +1,12 @@
+{% if boardDetail %}
+    <h1>{{boardDetail.boardName}}</h1>
+    <p>{{boardDetail.boardDesc}}</p>
+
+    {% if threadList %}
+        <h2>threads:</h2>
+        {% for thread in threadList %}
+            <li><a href="{% url 'detailThread' boardDetail.boardCode thread.id %}">{{thread.threadTitle}}</a></li>
+        {% endfor %}
+    {% endif %}
+
+{% endif %}
