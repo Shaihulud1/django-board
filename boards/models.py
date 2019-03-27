@@ -5,6 +5,7 @@ class Board(models.Model):
     boardName = models.CharField(max_length = 50)
     boardCode = models.CharField(max_length = 3)
     boardDesc = models.TextField()
+    boardImg  = models.FilePathField(default='img/default.png')
     isActive  = models.IntegerField(default=1)
 
 class Thread(models.Model):
@@ -13,4 +14,5 @@ class Thread(models.Model):
     threadDesc   = models.TextField()
     threadAuthor = models.CharField(max_length = 50)
     pubDate      = models.DateTimeField(auto_now_add=True)
+    threadImg    = models.FilePathField(default='img/default.png')
     isActive     = models.IntegerField(default=1)
