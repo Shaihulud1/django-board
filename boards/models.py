@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
 class Board(models.Model):
@@ -12,13 +13,19 @@ class Board(models.Model):
     def __str__(self):
         return self.boardName
 
+
 class Thread(models.Model):
     boardFK      = models.ForeignKey(Board, on_delete=models.CASCADE)
     threadTitle  = models.TextField()
     threadDesc   = models.TextField()
     threadAuthor = models.CharField(default="anon", max_length = 50)
     pubDate      = models.DateTimeField(auto_now_add=True)
-    threadImg    = models.FileField(default='static/boards/img/default.png', upload_to='static/boards/img/uploads/%Y/%m', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])])
+    threadImg    = models.FileField(
+                        default='img/default.png',
+                        upload_to='img/uploads/%Y/%m',
+                        storage=FileSystemStorage(location='boards/static/boards',base_url='/uploads'),
+                        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])]
+                   )
     isActive     = models.IntegerField(default=1)
 
     def __str__(self):

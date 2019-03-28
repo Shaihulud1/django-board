@@ -1,7 +1,7 @@
 {% extends "boards/base.html" %}
 {% load static %}
 {% block content %}
-    <img src="/{{ threadDetail.threadImg }}" alt="">
+    <img src="{% static '/'%}{{threadDetail.threadImg}}" alt="">
     <h1>{{threadDetail.threadTitle}}</h1>
     <p>{{threadDetail.pubDate}}</p>
     <p>{{threadDetail.threadDesc}}</p>
