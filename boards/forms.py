@@ -5,4 +5,4 @@ from .models import Thread
 class ThreadForm(ModelForm):
     class Meta:
         model = Thread
-        fields = ['threadTitle', 'threadDesc']
+        fields = ['threadTitle', 'threadDesc', 'threadImg']

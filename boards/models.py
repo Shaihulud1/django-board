@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 class Board(models.Model):
@@ -17,7 +18,7 @@ class Thread(models.Model):
     threadDesc   = models.TextField()
     threadAuthor = models.CharField(default="anon", max_length = 50)
     pubDate      = models.DateTimeField(auto_now_add=True)
-    threadImg    = models.FilePathField(default='img/default.png')
+    threadImg    = models.FileField(default='static/boards/img/default.png', upload_to='static/boards/img/uploads/%Y/%m', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])])
     isActive     = models.IntegerField(default=1)
 
     def __str__(self):

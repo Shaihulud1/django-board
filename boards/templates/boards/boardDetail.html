@@ -7,11 +7,12 @@
         <h1>{{boardDetail.boardName}}</h1>
         <p>{{boardDetail.boardDesc}}</p>
         Add new thread:
-        <form class="" action="" method="post">
-            {{form.errors}}
+        <form class="" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.threadTitle }}
             {{ form.threadDesc}}
+            {{ form.threadImg}}
+            {{form.errors}}
             <input type="submit" name="" value="add new">
         </form>
         {% if threadList %}

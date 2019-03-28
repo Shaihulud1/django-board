@@ -14,7 +14,7 @@ def detail(request, boardCode):
     boardDetail = get_object_or_404(Board, boardCode = boardCode, isActive__gt = 0)
     threadList = Thread.objects.filter(boardFK = boardDetail.id, isActive__gt = 0)
     if request.method == "POST":
-        form = ThreadForm(request.POST)
+        form = ThreadForm(request.POST, request.FILES)
         if form.is_valid():
             formObj = form.save(commit=False)
             formObj.boardFK = boardDetail
