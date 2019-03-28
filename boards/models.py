@@ -8,6 +8,9 @@ class Board(models.Model):
     boardImg  = models.FilePathField(default='img/default.png')
     isActive  = models.IntegerField(default=1)
 
+    def __str__(self):
+        return self.boardName
+
 class Thread(models.Model):
     boardFK      = models.ForeignKey(Board, on_delete=models.CASCADE)
     threadTitle  = models.TextField()
@@ -16,3 +19,6 @@ class Thread(models.Model):
     pubDate      = models.DateTimeField(auto_now_add=True)
     threadImg    = models.FilePathField(default='img/default.png')
     isActive     = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.threadTitle

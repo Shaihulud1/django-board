@@ -6,7 +6,14 @@
         <img src="{% static 'boards/'|add:boardDetail.boardImg %}" alt="">
         <h1>{{boardDetail.boardName}}</h1>
         <p>{{boardDetail.boardDesc}}</p>
-        {{form}}
+        Add new thread:
+        <form class="" action="" method="post">
+            {{form.errors}}
+            {% csrf_token %}
+            {{ form.threadTitle }}
+            {{ form.threadDesc}}
+            <input type="submit" name="" value="add new">
+        </form>
         {% if threadList %}
             <h2>threads:</h2>
             {% for thread in threadList %}
