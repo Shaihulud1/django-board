@@ -1,10 +1,12 @@
 {% extends "boards/base.html" %}
 {% load static %}
 {% block content %}
+
     {% if boardDetail %}
         <img src="{% static 'boards/'|add:boardDetail.boardImg %}" alt="">
         <h1>{{boardDetail.boardName}}</h1>
         <p>{{boardDetail.boardDesc}}</p>
+        {{form}}
         {% if threadList %}
             <h2>threads:</h2>
             {% for thread in threadList %}
