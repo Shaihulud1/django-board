@@ -5,4 +5,22 @@
     <h1>{{threadDetail.threadTitle}}</h1>
     <p>{{threadDetail.pubDate}}</p>
     <p>{{threadDetail.threadDesc}}</p>
+    {% if messageList %}
+        {% for msg in messageList %}
+            <div>
+                <h3>{{msg.author}}</h3>
+                <p>POST ID: {{msg.id}}</p>
+                <p>{{msg.textMessage}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>There is no message yet</p>
+    {% endif %}
+    Add message:
+    <form class="" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.textMessage }}
+        {{form.errors}}
+        <input type="submit" name="" value="add new">
+    </form>
 {% endblock content %}

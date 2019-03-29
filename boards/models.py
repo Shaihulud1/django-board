@@ -30,3 +30,10 @@ class Thread(models.Model):
 
     def __str__(self):
         return self.threadTitle
+
+class ThreadMessage(models.Model):
+    threadFK      = models.ForeignKey(Thread, on_delete = models.CASCADE)
+    textMessage   = models.TextField()
+    authorIP      = models.CharField(max_length = 200)
+    author        = models.CharField(default="anon", max_length = 50)
+    pubDate       = models.DateTimeField(auto_now_add=True)

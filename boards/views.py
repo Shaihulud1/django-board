@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 
-from .forms import ThreadForm
-from .models import Board, Thread
+from .forms import ThreadForm, ThreadMessageForm
+from .models import Board, Thread, ThreadMessage
 
 # Create your views here.
 def index(request):
@@ -28,5 +28,25 @@ def detail(request, boardCode):
 def detailThread(request, boardCode, threadId):
     boardDetail = get_object_or_404(Board, boardCode = boardCode, isActive__gt = 0)
     threadDetail = get_object_or_404(Thread, boardFK = boardDetail.id, id = threadId, isActive__gt = 0)
-    context = {'threadDetail': threadDetail}
+    if request.method == "POST":
+        form = ThreadMessageForm(request.POST)
+        if form.is_valid():
+            formObj = form.save(commit=False)
+            formObj.authorIP = request.META['REMOTE_ADDR']
+            formObj.threadFK = threadDetail
+            formObj.save()
+            #return http.HttpResponseRedirect('')
+            form = ThreadMessageForm()
+    else:
+        form = ThreadMessageForm()
+    messageList = ThreadMessage.objects.filter(threadFK = threadDetail.id)
+    context = {'threadDetail': threadDetail, 'messageList': messageList, 'form': form}
     return render(request, 'boards/threadDetail.html', context)
+
+
+    # class ThreadMessage(models.Model):
+    #     threadFK      = models.ForeignKey(Thread, on_delete = models.CASCADE)
+    #     textMessage   = models.TextField()
+    #     authorIP      = models.CharField(max_length = 200)
+    #     author        = models.CharField(default="anon", max_length = 50)
+    #     pubDate       = models.DateTimeField(auto_now_add=True)
