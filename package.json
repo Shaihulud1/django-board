@@ -1,0 +1,19 @@
+{
+  "name": "huludboard",
+  "version": "1.0.0",
+  "description": "ib on django fw",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shaihulud1/django-board.git"
+  },
+  "author": "shaihulud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shaihulud1/django-board/issues"
+  },
+  "homepage": "https://github.com/Shaihulud1/django-board#readme"
+}
