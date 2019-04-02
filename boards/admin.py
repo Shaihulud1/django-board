@@ -3,7 +3,8 @@ from django.conf import settings
 from .models import Board, Thread, ThreadMessage
 
 class BoardAdmin(admin.ModelAdmin):
-    list_display = ('id', 'boardName', 'activity')
+    list_display = ('id', 'boardName', 'activity', 'imagePreview')
+    readonly_fields = ['imagePreview']
 
     def activity(self, obj):
         return 'YES' if obj.isActive > 0 else 'NO'
@@ -28,7 +29,8 @@ class ThreadMessageInline(admin.StackedInline):
     model = ThreadMessage
 
 class ThreadAdmin(admin.ModelAdmin):
-    list_display = ('id', 'threadTitle', 'getboard', 'activity')
+    list_display = ('id', 'threadTitle', 'getboard', 'activity', 'imagePreview')
+    readonly_fields = ['imagePreview']
     inlines = [ThreadMessageInline]
     def activity(self, obj):
         return 'YES' if obj.isActive > 0 else 'NO'

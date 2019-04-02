@@ -7,3 +7,7 @@ var headerObj = new Vue({
 
     },
 });
+
+var sideMenu = new Vue({
+    el: "#side-menu"
+});
