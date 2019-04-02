@@ -20,8 +20,20 @@ body{
 .upper-head{
         text-align: right;
         padding-top: 7vh;
+        padding-bottom: 2vh;
         padding-right: 10vh;
         margin-bottom: 10vh;
+        background-color: $staticColor;
+        .openned-menu-btn{
+            transform: rotate(90deg);
+        }
+        .menu-btn{
+            a{
+                float: left;
+                font-size: 40px;
+                color: $textColor
+            }
+        }
         h2{
             font-size: 60px;
             color: $neonColor;
@@ -62,7 +74,16 @@ body{
         }
     }
 }
-
+.footer-main{
+    background-color: $staticColor;
+    padding-top: 5vh;
+    a{
+        color: $textColor;
+    }
+    li{
+        list-style-type: none;
+    }
+}
 
 @keyframes neonLighting{
     0% {

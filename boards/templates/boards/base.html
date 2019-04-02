@@ -8,21 +8,27 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" >
         <link rel="stylesheet" href="{% static 'boards/css/main.css' %}" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     <body>
         <div class="main-wrapper">
-            <div class="upper-head logo">
+            <div class="upper-head logo" id="header-wrap">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-2">
+                            <div class="menu-btn">
+                                <a href="#" v-bind:class="{'openned-menu-btn': isMenuOpen}" @click="isMenuOpen=!isMenuOpen"><i class="fas fa-bars"></i></a>
+                            </div>
+                            <!---
                             <ul>
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Contact</a></li>
                                 <li><a href="#">Feedback</a></li>
                             </ul>
+                        -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-10">
                             <a href="#">
                                 <h2>dBoard</h2>
                             </a>
@@ -33,6 +39,33 @@
             {% block content %}
             {% endblock %}
         </div>
+        <footer class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Feedback</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        {% if boardCodes %}
+                            <div class="container board-list">
+                                <div class="row">
+                                    {% for code in boardCodes %}
+                                        <div class="col-md-2">
+                                            <a href="#">/{{code}}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </footer>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
