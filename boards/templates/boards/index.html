@@ -2,13 +2,21 @@
 {% load static %}
 {% block content %}
     {% if boardsList %}
-        {% for board in boardsList %}
-            <li>
-                <a href="{% url 'detailBoard' board.boardCode %}">
-                    <img src="{% static 'boards/'|add:board.boardImg %}" alt="">
-                    <p>{{board.boardName}}</p>
-                </a>
-            </li>
-        {% endfor %}
+        <div class="container board-list">
+            <h1>List of the boards</h1>
+            <div class="row">
+                {% for board in boardsList %}
+                    <div class="col-md-4 board-item">
+                        <a href="{% url 'detailBoard' board.boardCode %}">
+                            <img src="{% static 'boards/' %}{{board.boardImg}}" alt="">
+                            <p class="board-desc">
+                                <h4>{{board.boardName}}</h4>
+                                <p>{{board.boardName}}</p>
+                            </p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     {% endif %}
 {% endblock content %}

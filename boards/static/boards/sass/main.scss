@@ -1,6 +1,99 @@
 @import "vars.scss";
 body{
-  padding: 0;
-  margin: 0;
-  background-color: $backGroundColor !important;
+    padding: 0;
+    margin: 0;
+    background-color: $backGroundColor !important;
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'ZCOOL QingKe HuangYou', cursive;
+    }
+    a,p{
+        font-family: 'Play', sans-serif;
+    }
+    a{
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+
+.upper-head{
+        text-align: right;
+        padding-top: 7vh;
+        padding-right: 10vh;
+        margin-bottom: 10vh;
+        h2{
+            font-size: 60px;
+            color: $neonColor;
+            text-transform: uppercase;
+            animation: neonLighting 4s infinite linear;
+        }
+        ul{
+            li{
+                margin-left: 5vh;
+                float: left;
+                list-style-type: none;
+                a{
+                    color: $textColor;
+                }
+            }
+        }
+}
+
+
+.main-wrapper{
+    color: $textColor;
+    .board-list{
+        h1{
+            margin-bottom: 10vh;
+            font-size: 30px;
+            animation: neonLight 4s infinite linear;
+        }
+        text-align: center;
+        .board-item{
+            margin-bottom: 50px;
+            p{
+                color: $textColor;
+            }
+            img{
+                max-width: 220px;
+                max-height: 220px;
+            }
+        }
+    }
+}
+
+
+@keyframes neonLighting{
+    0% {
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+    50% {
+        text-shadow: 0 0 2px $neonColor,
+                     0 0 4px $neonColor,
+    }
+    100%{
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+}
+@keyframes neonLight{
+    0% {
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+    50% {
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+    100%{
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
 }

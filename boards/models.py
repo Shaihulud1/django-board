@@ -7,7 +7,12 @@ class Board(models.Model):
     boardName = models.CharField(max_length = 50)
     boardCode = models.CharField(max_length = 3)
     boardDesc = models.TextField()
-    boardImg  = models.FilePathField(default='img/default.png')
+    boardImg  = models.FileField(
+                        default='img/default.png',
+                        upload_to='img/uploads/%Y/%m',
+                        storage=FileSystemStorage(location='boards/static/boards',base_url='/uploads'),
+                        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])]
+                   )
     isActive  = models.IntegerField(default=1)
 
     def __str__(self):

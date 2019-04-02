@@ -17,7 +17,7 @@
         <p>There is no message yet</p>
     {% endif %}
     Add message:
-    <form class="" action="" method="post" enctype="multipart/form-data">
+    <form class="" action="#end" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.textMessage }}
         {{form.errors}}

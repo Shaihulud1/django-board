@@ -7,7 +7,11 @@ from .models import Board, Thread, ThreadMessage
 # Create your views here.
 def index(request):
     boardsList = Board.objects.filter(isActive__gt = 0)
-    context = {'boardsList': boardsList}
+    boardCodes = []
+    if boardsList:
+        for board in boardsList:
+            boardCodes.append(board.boardCode)
+    context = {'boardsList': boardsList, 'boardCodes':boardCodes}
     return render(request, 'boards/index.html', context)
 
 def detail(request, boardCode):
